@@ -1,0 +1,6 @@
+2026-04-14 00:12:34| Neal| Woodstock, Il| Smoked Porter W/ Vanilla Bean| Stone| 12.99| 5.9| Porter| Standard (5.0% - 7.9%)| United States| 3
+2026-04-15 19:18:03 | Neal | Woodstock, Il | Corona | Corona | 12.99 | 4.5 | Pilsner | Session (<5.0%) | Mexico | 3
+2026-04-15 19:45:21 | Neal | Woodstock, Il | Corona | Corona | 12.99 | 4.5 | Pilsner | Session (<5.0%) | Mexico | 3
+2026-04-15 19:54:33 | Neal | Woodstock, Il | Corona | Corona | 12.99 | 4.5 | Pilsner | Session (<5.0%) | Mexico | 3
+2026-04-20 22:26:53 | Neal | Woodstock, Il | Corona | Corona | 12.99 | 4.5 | Pilsner | Session (<5.0%) | Mexico | 3
+2026-04-20 22:33:05 | Neal | Woodstock, Il | Corona | Corona | 12.99 | 4.5 | Pilsner | Session (<5.0%) | Mexico | 3

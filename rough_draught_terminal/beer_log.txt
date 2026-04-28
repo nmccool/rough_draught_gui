@@ -1,0 +1,30 @@
+**************************************************
+BEER ENTRY 1
+Timestamp: 2026-04-07 01:00:38
+User: Neal
+Location: Woodstock, Il
+Beer: Beer For Dealing With Your Family
+Brewery: Off Color Brewing
+Price: $19.99
+ABV: 12.0%
+Style: None
+Strength: None
+Country: None
+Rating: 3
+**************************************************
+
+**************************************************
+BEER ENTRY 1
+Timestamp: 2026-04-07 01:13:01
+User: Neal
+Location: Woodstock, Il
+Beer: Yeungling Traditional Lager
+Brewery: Yeungling
+Price: $13.99
+ABV: 4.5%
+Style: None
+Strength: None
+Country: None
+Rating: 5
+**************************************************
+

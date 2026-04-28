@@ -1,0 +1,14 @@
+--------------------------------------------------
+ROUGH DRAUGHT ENTRY
+--------------------------------------------------
+Timestamp: 2026-04-20 22:33:05
+User: Neal
+Location: Woodstock, Il
+Beer: Corona
+Brewery: Corona
+Price: $12.99
+ABV: 4.5%
+Style: Pilsner
+Strength: Session (<5.0%)
+Country: Mexico
+Rating: 3
