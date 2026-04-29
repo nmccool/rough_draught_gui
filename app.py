@@ -76,7 +76,7 @@ def main():
             else:
                 entry = {
                     "timestamp": datetime.now(CENTRAL_TIME).strftime(
-                        "%Y-%m-%d %I:%M %p"
+                    "%Y-%m-%d %I:%M %p %Z"
                     ),
                     "store": store,
                     "beer_name": beer_name,
@@ -109,6 +109,12 @@ def main():
         st.info("No beer entries found yet.")
     else:
         st.dataframe(entries, use_container_width=True)
+
+        st.subheader("Expanded Tasting Notes")
+
+        for _, row in entries.iterrows():
+            with st.expander(f"{row['beer_name']} by {row['brewery']}"):
+                st.write(row["tasting_notes"])
 
 
 if __name__ == "__main__":
