@@ -37,13 +37,13 @@ def ensure_data_file():
 
 
 def load_entries():
-    """Load beer entries from the CSV file."""
+    """Load beer entries from the CSV file"""
     ensure_data_file()
     return pd.read_csv(DATA_FILE)
 
 
 def save_entry(entry):
-    """Save a new beer entry to the CSV file."""
+    """Save a new beer entry to the CSV file"""
     df = load_entries()
     new_entry = pd.DataFrame([entry])
     df = pd.concat([df, new_entry], ignore_index=True)
