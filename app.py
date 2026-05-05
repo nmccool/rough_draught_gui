@@ -37,13 +37,13 @@ def ensure_data_file():
 
 
 def load_entries():
-    """Load beer entries from the CSV file"""
+    """Load beer entries from the CSV file."""
     ensure_data_file()
     return pd.read_csv(DATA_FILE)
 
 
 def save_entry(entry):
-    """Save a new beer entry to the CSV file"""
+    """Save a new beer entry to the CSV file."""
     df = load_entries()
     new_entry = pd.DataFrame([entry])
     df = pd.concat([df, new_entry], ignore_index=True)
@@ -60,13 +60,41 @@ def main():
     st.header("Add a Beer Entry")
 
     with st.form("beer_entry_form"):
-        store = st.text_input("Store Purchased From")
-        beer_name = st.text_input("Beer Name")
-        brewery = st.text_input("Brewery")
-        abv = st.number_input("ABV %", min_value=0.0, max_value=25.0, step=0.1)
-        region = st.text_input("Region")
-        rating = st.slider("Rating", min_value=0, max_value=10, value=0)
-        tasting_notes = st.text_area("Tasting Notes")
+        store = st.text_input(
+            "Where did you get it? (Optional — store, brewery, bar)"
+        )
+
+        beer_name = st.text_input(
+            "Beer Name (Required — use the name on the label or menu)"
+        )
+
+        brewery = st.text_input(
+            "Brewery (Required — who made it?)"
+        )
+
+        abv = st.number_input(
+            "ABV % (Optional — leave at 0 if unknown)",
+            min_value=0.0,
+            max_value=25.0,
+            value=0.0,
+            step=0.1,
+        )
+
+        region = st.text_input(
+            "Brewery Region (Optional — city, state, or country)"
+        )
+
+        rating = st.slider(
+            "Your Rating (0–10 — 0 = nope, 10 = would drink again)",
+            min_value=0,
+            max_value=10,
+            value=0,
+        )
+
+        tasting_notes = st.text_area(
+            "What flavors are YOU getting? "
+            "(Optional — aroma, taste, mouthfeel, anything that stood out)"
+        )
 
         submitted = st.form_submit_button("Save Beer")
 
@@ -76,7 +104,7 @@ def main():
             else:
                 entry = {
                     "timestamp": datetime.now(CENTRAL_TIME).strftime(
-                    "%Y-%m-%d %I:%M %p %Z"
+                        "%Y-%m-%d %I:%M %p %Z"
                     ),
                     "store": store,
                     "beer_name": beer_name,
