@@ -160,3 +160,11 @@ This usability report highlighted a few consistent issues across different types
 The biggest problems were unclear field labels, too many inputs for casual users, and not enough guidance when entering tasting notes.
 
 By simplifying the form, making optional fields more obvious, and improving the wording, the app can feel faster and more natural to use without losing functionality.
+
+
+## Before
+![Before UI](images/ScreenshotOriginal.png)
+## After with AI
+![After UI](images/ScreenshotAI.png)
+## After with my changes
+![After UI](images/ScreenshotMyChanges.png)
