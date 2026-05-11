@@ -262,18 +262,18 @@ def main():
 
     with st.form("beer_entry_form"):
         location = st.text_input(
-            "Location Purchased/Consumed "
-            "(Optional: store, brewery, bar, restaurant)"
+            "Location Purchased "
+            "(Store, brewery, bar, restaurant, etc)"
         )
 
         beer_name = st.text_input(
             "Beer Name :red[*] "
-            "(Required: use the name on the label or menu)"
+            "(Required)"
         )
 
         brewery = st.text_input(
             "Brewery :red[*] "
-            "(Required: who made it?)"
+            "(Required)"
         )
 
         style_choice = st.selectbox(
@@ -341,7 +341,7 @@ def main():
         price = st.number_input(
             "Price Paid ($)",
             min_value=0.0,
-            max_value=500.0,
+            max_value=100.0,
             value=0.0,
             step=0.50,
         )
@@ -363,7 +363,7 @@ def main():
         st.caption(f"Rating Meaning: {rating_description}")
 
         tasting_notes = st.text_area(
-            "What flavors are YOU getting? "
+            "What flavors are YOU getting? <br>"
             "(Optional: aroma, taste, mouthfeel, finish, or anything memorable)"
         )
 
