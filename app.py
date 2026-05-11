@@ -101,7 +101,7 @@ def load_custom_css():
         background_css = f"""
         background-color: #2b1a10;
         background-image: url("data:image/png;base64,{background_image}");
-        background-size: min(1200px, 95vw) auto;
+        background-size: min(1400px, 95vw) auto;
         background-repeat: no-repeat;
         background-position: top center;
         background-attachment: fixed;
@@ -112,80 +112,16 @@ def load_custom_css():
     st.markdown(
         f"""
         <style>
+
         .stApp {{
             {background_css}
         }}
 
         .main .block-container {{
-            background-color: rgba(236, 207, 150, 0.90);
+            background-color: rgba(236, 207, 150, 0.00);
             border-radius: 18px;
             padding: 2rem;
-            border: 2px solid rgba(65, 38, 20, 0.65);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
             max-width: 950px;
-        }}
-
-        h1, h2, h3, p, div, label, span {{
-            color: #2b1a10;
-        }}
-
-        h1, h2, h3 {{
-            font-family: "Times New Roman", serif;
-        }}
-
-        p, div, label, input, textarea {{
-            font-family: "Courier New", monospace;
-        }}
-
-        input, textarea, select {{
-            background-color: #3b2414 !important;
-            color: #f3dfb3 !important;
-            border: 1px solid #8a613a !important;
-            border-radius: 8px !important;
-        }}
-
-        input::placeholder, textarea::placeholder {{
-            color: #c9aa75 !important;
-        }}
-
-        .stSelectbox div[data-baseweb="select"] > div {{
-            background-color: #3b2414 !important;
-            color: #f3dfb3 !important;
-            border-color: #8a613a !important;
-        }}
-
-        .stSelectbox div[data-baseweb="select"] span {{
-            color: #f3dfb3 !important;
-        }}
-
-        .stNumberInput input {{
-            background-color: #3b2414 !important;
-            color: #f3dfb3 !important;
-        }}
-
-        .stTextInput input {{
-            background-color: #3b2414 !important;
-            color: #f3dfb3 !important;
-        }}
-
-        .stTextArea textarea {{
-            background-color: #3b2414 !important;
-            color: #f3dfb3 !important;
-        }}
-
-        .stButton > button {{
-            background-color: #3b2414;
-            color: #f3dfb3;
-            border-radius: 10px;
-            border: 1px solid #8a613a;
-            padding: 0.6rem 1rem;
-            font-weight: bold;
-        }}
-
-        .stButton > button:hover {{
-            background-color: #5a3822;
-            color: #fff1c7;
-            border: 1px solid #b8874f;
         }}
 
         .logo-container {{
@@ -194,6 +130,93 @@ def load_custom_css():
             align-items: center;
             margin-bottom: 1rem;
         }}
+
+        .slogan {{
+            font-family: "Courier New", monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.7;
+            color: #2b1a10;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+        }}
+
+        h1, h2, h3 {{
+            font-family: "Times New Roman", serif !important;
+            color: #2b1a10 !important;
+            font-weight: 700 !important;
+        }}
+
+        h2 {{
+            font-size: 2.2rem !important;
+        }}
+
+        p, div, label, span {{
+            color: #2b1a10;
+        }}
+
+        label,
+        .stMarkdown,
+        .stCaption {{
+            font-family: "Courier New", monospace !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            color: #2b1a10 !important;
+        }}
+
+        p,
+        div {{
+            font-family: "Courier New", monospace;
+        }}
+
+        input,
+        textarea {{
+            background-color: rgba(59, 36, 20, 0.78) !important;
+            color: #f8e7bd !important;
+            caret-color: #f8e7bd !important;
+            border: 1px solid #8a613a !important;
+            border-radius: 10px !important;
+        }}
+
+        input::placeholder,
+        textarea::placeholder {{
+            color: #d7bd88 !important;
+        }}
+
+        .stSelectbox div[data-baseweb="select"] > div {{
+            background-color: rgba(59, 36, 20, 0.78) !important;
+            color: #f8e7bd !important;
+            border: 1px solid #8a613a !important;
+            border-radius: 10px !important;
+        }}
+
+        .stSelectbox div[data-baseweb="select"] span {{
+            color: #f8e7bd !important;
+        }}
+
+        .stNumberInput input,
+        .stTextInput input,
+        .stTextArea textarea {{
+            background-color: rgba(59, 36, 20, 0.78) !important;
+            color: #f8e7bd !important;
+        }}
+
+        .stButton > button {{
+            background-color: rgba(59, 36, 20, 0.88);
+            color: #f8e7bd;
+            border-radius: 10px;
+            border: 1px solid #8a613a;
+            padding: 0.6rem 1rem;
+            font-weight: bold;
+            font-family: "Courier New", monospace;
+        }}
+
+        .stButton > button:hover {{
+            background-color: rgba(90, 56, 34, 0.95);
+            color: #fff1c7;
+            border: 1px solid #b8874f;
+        }}
+
         </style>
         """,
         unsafe_allow_html=True,
@@ -214,10 +237,15 @@ def main():
         st.markdown('<div class="logo-container">', unsafe_allow_html=True)
         st.image(str(LOGO_FILE), width=420)
         st.markdown("</div>", unsafe_allow_html=True)
-    st.write(
-        "Track the good taps and the rough draughts.\n"
-        "Never re-buy a bad beer again!"
-    )
+    st.markdown(
+    """
+    <div class="slogan">
+        Track the good taps and the rough draughts.<br>
+        Never re-buy a bad beer again!
+    </div>
+    """,
+    unsafe_allow_html=True,
+    )   
 
     st.header("Add a Beer Entry")
 
