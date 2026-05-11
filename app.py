@@ -94,18 +94,20 @@ def get_base64_image(image_path):
 
 
 def load_custom_css():
-    """Apply Rough Draught custom styling."""
+    """Add some personality to the app (this is my wheelhouse)"""
     if BACKGROUND_FILE.exists():
         background_image = get_base64_image(BACKGROUND_FILE)
 
         background_css = f"""
+        background-color: #2b1a10;
         background-image: url("data:image/png;base64,{background_image}");
-        background-size: cover;
-        background-position: center;
+        background-size: min(1400px, 95vw) auto;
+        background-repeat: no-repeat;
+        background-position: top center;
         background-attachment: fixed;
         """
     else:
-        background_css = "background-color: #3b2414;"
+        background_css = "background-color: #2b1a10;"
 
     st.markdown(
         f"""
@@ -115,34 +117,82 @@ def load_custom_css():
         }}
 
         .main .block-container {{
-            background-color: rgba(245, 222, 179, 0.88);
+            background-color: rgba(236, 207, 150, 0.90);
             border-radius: 18px;
             padding: 2rem;
-            border: 2px solid rgba(70, 40, 20, 0.4);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+            border: 2px solid rgba(65, 38, 20, 0.65);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
             max-width: 950px;
+        }}
+
+        h1, h2, h3, p, div, label, span {{
+            color: #2b1a10;
         }}
 
         h1, h2, h3 {{
             font-family: "Times New Roman", serif;
-            color: #3b2414;
         }}
 
         p, div, label, input, textarea {{
             font-family: "Courier New", monospace;
         }}
 
+        input, textarea, select {{
+            background-color: #3b2414 !important;
+            color: #f3dfb3 !important;
+            border: 1px solid #8a613a !important;
+            border-radius: 8px !important;
+        }}
+
+        input::placeholder, textarea::placeholder {{
+            color: #c9aa75 !important;
+        }}
+
+        .stSelectbox div[data-baseweb="select"] > div {{
+            background-color: #3b2414 !important;
+            color: #f3dfb3 !important;
+            border-color: #8a613a !important;
+        }}
+
+        .stSelectbox div[data-baseweb="select"] span {{
+            color: #f3dfb3 !important;
+        }}
+
+        .stNumberInput input {{
+            background-color: #3b2414 !important;
+            color: #f3dfb3 !important;
+        }}
+
+        .stTextInput input {{
+            background-color: #3b2414 !important;
+            color: #f3dfb3 !important;
+        }}
+
+        .stTextArea textarea {{
+            background-color: #3b2414 !important;
+            color: #f3dfb3 !important;
+        }}
+
         .stButton > button {{
-            background-color: #4a2c1d;
-            color: white;
+            background-color: #3b2414;
+            color: #f3dfb3;
             border-radius: 10px;
-            border: none;
+            border: 1px solid #8a613a;
             padding: 0.6rem 1rem;
             font-weight: bold;
         }}
 
         .stButton > button:hover {{
-            background-color: #6a3f29;
+            background-color: #5a3822;
+            color: #fff1c7;
+            border: 1px solid #b8874f;
+        }}
+
+        .logo-container {{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
         }}
         </style>
         """,
