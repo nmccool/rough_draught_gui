@@ -94,14 +94,14 @@ def get_base64_image(image_path):
 
 
 def load_custom_css():
-    """Add some personality to the app (this is my wheelhouse)"""
+    """Add some style to the app (this is my wheelhouse)"""
     if BACKGROUND_FILE.exists():
         background_image = get_base64_image(BACKGROUND_FILE)
 
         background_css = f"""
         background-color: #2b1a10;
         background-image: url("data:image/png;base64,{background_image}");
-        background-size: min(1400px, 95vw) auto;
+        background-size: min(1200px, 95vw) auto;
         background-repeat: no-repeat;
         background-position: top center;
         background-attachment: fixed;
@@ -211,9 +211,9 @@ def main():
     load_custom_css()
 
     if LOGO_FILE.exists():
+        st.markdown('<div class="logo-container">', unsafe_allow_html=True)
         st.image(str(LOGO_FILE), width=420)
-
-    st.title("Rough Draught")
+        st.markdown("</div>", unsafe_allow_html=True)
     st.write(
         "Track the good taps and the rough draughts.\n"
         "Never re-buy a bad beer again!"
