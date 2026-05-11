@@ -101,7 +101,7 @@ def load_custom_css():
         background_css = f"""
         background-color: #2b1a10;
         background-image: url("data:image/png;base64,{background_image}");
-        background-size: min(1400px, 95vw) auto;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: top center;
         background-attachment: fixed;
@@ -247,7 +247,18 @@ def main():
     unsafe_allow_html=True,
     )   
 
-    st.header("Add a Beer Entry")
+    st.markdown(
+        """
+        <h2 style="
+            font-family: 'Courier New', monospace;
+            color: #2b1a10;
+            font-weight: 700;
+        ">
+            Add a Beer Entry
+        </h2>
+        """,
+        unsafe_allow_html=True,
+    )
 
     with st.form("beer_entry_form"):
         location = st.text_input(
