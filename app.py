@@ -234,31 +234,27 @@ def main():
     load_custom_css()
 
     if LOGO_FILE.exists():
-        st.markdown('<div class="logo-container">', unsafe_allow_html=True)
-        st.image(str(LOGO_FILE), width=420)
-        st.markdown("</div>", unsafe_allow_html=True)
         st.markdown(
-            """
-        <div class="slogan">
-            Track the good taps and the rough draughts.<br>
-            Never re-buy a bad beer again!
-        </div>
-        """,
-        unsafe_allow_html=True,
-        )   
+            '<div class="logo-wrapper">',
+            unsafe_allow_html=True,
+        )
+
+        st.image(str(LOGO_FILE), width=420)
 
         st.markdown(
             """
-            <h2 style="
-            font-family: 'Courier New', monospace;
-            color: #2b1a10;
-            font-weight: 700;
-            ">
-            Add a Beer Entry
-             </h2>
+            <div class="slogan">
+                Track the good taps and the rough draughts.<br>
+                Never re-buy a bad beer again!
+            </div>
             """,
             unsafe_allow_html=True,
-            )
+        )
+
+        st.markdown(
+            "</div>",
+            unsafe_allow_html=True,
+        )
 
     with st.form("beer_entry_form"):
         location = st.text_input(
