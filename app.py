@@ -9,6 +9,7 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 import streamlit as st
+import base64
 
 from blueprints import (
     BeerEntry,
@@ -86,18 +87,31 @@ def save_entry(entry):
     df.to_csv(DATA_FILE, index=False)
 
 
+def get_base64_image(image_path):
+    """Convert an image file to base64 for CSS use."""
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode()
+
+
 def load_custom_css():
     """Apply Rough Draught custom styling."""
-    background_path = BACKGROUND_FILE.as_posix()
+    if BACKGROUND_FILE.exists():
+        background_image = get_base64_image(BACKGROUND_FILE)
+
+        background_css = f"""
+        background-image: url("data:image/png;base64,{background_image}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        """
+    else:
+        background_css = "background-color: #3b2414;"
 
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("{background_path}");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            {background_css}
         }}
 
         .main .block-container {{
@@ -151,7 +165,7 @@ def main():
 
     st.title("Rough Draught")
     st.write(
-        "Track the good taps and the rough draughts.  "
+        "Track the good taps and the rough draughts.\n"
         "Never re-buy a bad beer again!"
     )
 
