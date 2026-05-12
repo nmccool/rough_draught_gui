@@ -141,6 +141,7 @@ def load_custom_css():
 
         .logo-wrapper img {{
             display: block;
+            position: fixed;
             margin-left: auto;
             margin-right: auto;
         }}
@@ -392,7 +393,7 @@ def main():
         st.caption(f"Rating Meaning: {rating_description}")
 
         tasting_notes = st.text_area(
-            "What flavors are YOU getting? <br>"
+            "What flavors are YOU getting?\n"
             "(Optional: aroma, taste, mouthfeel, finish, or anything memorable)"
         )
 
