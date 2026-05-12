@@ -123,8 +123,8 @@ def load_custom_css():
 
         .block-container {{
             padding-top: 0rem !important;
-            padding-bottom: 2rem;
-            padding-left: 2rem;
+            padding-bottom: 0rem;
+            padding-left: 40rem;
             padding-right: 2rem;
             max-width: 650px;
         }}
