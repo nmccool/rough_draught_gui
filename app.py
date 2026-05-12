@@ -117,7 +117,7 @@ def load_custom_css():
             {background_css}
         }}
 
-        .block-container {{
+        .main .block-container {{
         padding-top: 0rem !important;
         padding-bottom: 2rem;
         padding-left: 2rem;
