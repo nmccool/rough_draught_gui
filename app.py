@@ -124,7 +124,7 @@ def load_custom_css():
         .block-container {{
             padding-top: 0rem !important;
             padding-bottom: 0rem;
-            padding-left: 7rem;
+            padding-left: 8rem;
             padding-right: 2rem;
             max-width: 675px;
         }}
@@ -153,7 +153,7 @@ def load_custom_css():
             color: #2b1a10;
             text-align: center;
             margin-top: 0rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0rem;
         }}
 
         h1, h2, h3 {{
@@ -164,8 +164,8 @@ def load_custom_css():
 
         h2 {{
             font-size: 2.2rem !important;
-            margin-top: 1rem !important;
-            margin-bottom: 1.5rem !important;
+            margin-top: .5rem !important;
+            margin-bottom: .5rem !important;
         }}
 
         p,
@@ -194,7 +194,7 @@ def load_custom_css():
             background-color: rgba(59, 36, 20, 0.70) !important;
             color: #f8e7bd !important;
             caret-color: #f8e7bd !important;
-            border: 1px solid #8a613a !important;
+            border: 2px solid #8a613a !important;
             border-radius: 10px !important;
         }}
 
@@ -206,7 +206,7 @@ def load_custom_css():
         .stSelectbox div[data-baseweb="select"] > div {{
             background-color: rgba(59, 36, 20, 0.70) !important;
             color: #f8e7bd !important;
-            border: 1px solid #8a613a !important;
+            border: 2px solid #8a613a !important;
             border-radius: 10px !important;
         }}
 
