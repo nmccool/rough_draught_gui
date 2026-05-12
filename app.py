@@ -104,7 +104,7 @@ def load_custom_css():
         background-image: url("data:image/png;base64,{background_image}");
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: top;
+        background-position: top center;
         background-attachment: fixed;
         """
     else:
@@ -117,11 +117,12 @@ def load_custom_css():
             {background_css}
         }}
 
-        .main .block-container {{
-            background-color: rgba(236, 207, 150, 0.00);
-            border-radius: 18px;
-            padding: 2rem;
-            max-width: 950px;
+        .block-container {{
+        padding-top: 0rem !important;
+        padding-bottom: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        max-width: 950px;
         }}
 
         .logo-wrapper {{
