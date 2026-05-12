@@ -95,7 +95,6 @@ def get_base64_image(image_path):
 
 def load_custom_css():
     """Add some style to the app (this is my wheelhouse)."""
-
     if BACKGROUND_FILE.exists():
         background_image = get_base64_image(BACKGROUND_FILE)
 
@@ -113,16 +112,21 @@ def load_custom_css():
     st.markdown(
         f"""
         <style>
+
+        header {{
+            visibility: hidden;
+        }}
+
         .stApp {{
             {background_css}
         }}
 
-        .main .block-container {{
-        padding-top: 0rem !important;
-        padding-bottom: 2rem;
-        padding-left: 5rem;
-        padding-right: 2rem;
-        max-width: 950px;
+        .block-container {{
+            padding-top: 0rem !important;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            max-width: 950px;
         }}
 
         .logo-wrapper {{
@@ -143,7 +147,7 @@ def load_custom_css():
 
         .slogan {{
             font-family: "Courier New", monospace;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             line-height: 1.7;
             color: #2b1a10;
@@ -160,9 +164,14 @@ def load_custom_css():
 
         h2 {{
             font-size: 2.2rem !important;
+            margin-top: 1rem !important;
+            margin-bottom: 1.5rem !important;
         }}
 
-        p, div, label, span {{
+        p,
+        div,
+        label,
+        span {{
             color: #2b1a10;
         }}
 
@@ -227,6 +236,7 @@ def load_custom_css():
             color: #fff1c7;
             border: 1px solid #b8874f;
         }}
+
         </style>
         """,
         unsafe_allow_html=True,
