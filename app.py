@@ -66,13 +66,13 @@ ENTRY_COLUMNS = [
 
 
 def get_base64_image(image_path):
-    """Convert an image file to base64 for CSS use."""
+    """Convert an image file to base64 for CSS use (going next level)"""
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode()
 
 
 def ensure_data_file():
-    """Create the data folder and CSV file if they do not exist."""
+    """Create the data folder and CSV file if they do not exist"""
     DATA_DIR.mkdir(exist_ok=True)
 
     if not DATA_FILE.exists():
@@ -81,7 +81,7 @@ def ensure_data_file():
 
 
 def load_entries():
-    """Load beer entries from the CSV file."""
+    """Load beer entries from the CSV file"""
     ensure_data_file()
     df = pd.read_csv(DATA_FILE)
 
@@ -93,7 +93,7 @@ def load_entries():
 
 
 def save_entry(entry):
-    """Save a new beer entry to the CSV file."""
+    """Save a new beer entry to the CSV file"""
     df = load_entries()
     new_entry = pd.DataFrame([entry.to_dict()])
     df = pd.concat([df, new_entry], ignore_index=True)
@@ -101,7 +101,7 @@ def save_entry(entry):
 
 
 def load_custom_css():
-    """Add some style to the app."""
+    """Adding my own theme to the app (this is my wheelhouse)"""
     if BACKGROUND_FILE.exists():
         background_image = get_base64_image(BACKGROUND_FILE)
 
@@ -378,7 +378,7 @@ def load_custom_css():
 
 
 def main():
-    """Run the Rough Draught Streamlit app."""
+    """Run the Rough Draught Streamlit app"""
     st.set_page_config(
         page_title="Rough Draught",
         page_icon="🍺",
@@ -397,7 +397,7 @@ def main():
         """
         <div class="slogan">
             Track the good taps and the rough draughts.<br>
-            Never re-buy a bad beer again!
+            So you never re-buy a bad beer again!
         </div>
         """,
         unsafe_allow_html=True,
