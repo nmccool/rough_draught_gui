@@ -1,1 +1,2 @@
-timestamp,store,beer_name,brewery,abv,region,rating,tasting_notes
+timestamp,location,beer_name,brewery,beer_style,abv,strength,country,city,state,pack_size,container_size,price,buy_again,rating,rating_description,tasting_notes
+2026-05-12 01:15 AM CDT,,Corona,Corona,Pilsner,4.5,Session,Mexico,,,12-Pack,12 oz,13.99,Yes,3,Solid 👍🏻,Tastes like a Mexican pilsner.  Gotta add lime and salt to make it shine.
