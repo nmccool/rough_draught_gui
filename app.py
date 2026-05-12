@@ -120,7 +120,7 @@ def load_custom_css():
         .main .block-container {{
         padding-top: 0rem !important;
         padding-bottom: 2rem;
-        padding-left: 2rem;
+        padding-left: 5rem;
         padding-right: 2rem;
         max-width: 950px;
         }}
