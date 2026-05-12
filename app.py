@@ -1,6 +1,17 @@
 """
-Rough Draught Streamlit App
-MVP v2: Create, save, view, and search beer tasting entries.
+-----------------------------------------------------------------------
+ASSIGNMENT 16A: STREAMLIT SYSTEM DELIVERY
+-----------------------------------------------------------------------
+[X] 1. Streamlit Migration: Logic is successfully ported to a web UI.
+[X] 2. UI/UX Design: Layout is organized, intuitive, and easy to navigate.
+[X] 3. GitHub Integration: Full source code is pushed to a public repo.
+[X] 4. Live Deployment: The app is accessible via a Streamlit Cloud URL.
+[X] 5. System Resilience: UI elements handle invalid inputs gracefully.
+[X] 6. OOP Backend: The app still uses Classes/Objects to manage data.
+[X] 7. Data Persistence: System reads/writes to a .txt or .csv file.
+-----------------------------------------------------------------------
+Name: Neal McCool
+Date: 2026-05-11
 """
 
 import base64
@@ -22,7 +33,6 @@ from blueprints import (
     validate_abv,
     validate_price,
     validate_other_field,
-    validate_us_location,
     STYLE_OPTIONS,
     COUNTRY_OPTIONS,
     PACK_SIZE_OPTIONS,
@@ -32,13 +42,11 @@ from blueprints import (
 
 
 BASE_DIR = Path(__file__).parent
-
 ASSETS_DIR = BASE_DIR / "Assets"
 DATA_DIR = BASE_DIR / "data"
 
 LOGO_FILE = ASSETS_DIR / "RoughDraughtLogoT.png"
 BACKGROUND_FILE = ASSETS_DIR / "Notepad.png"
-
 DATA_FILE = DATA_DIR / "beer_entries.csv"
 
 CENTRAL_TIME = ZoneInfo("America/Chicago")
@@ -66,13 +74,13 @@ ENTRY_COLUMNS = [
 
 
 def get_base64_image(image_path):
-    """Convert an image file to base64 for CSS use (going next level)"""
+    """Convert an image file to base64 for CSS use."""
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode()
 
 
 def ensure_data_file():
-    """Create the data folder and CSV file if they do not exist"""
+    """Create the data folder and CSV file if they do not exist."""
     DATA_DIR.mkdir(exist_ok=True)
 
     if not DATA_FILE.exists():
@@ -81,7 +89,7 @@ def ensure_data_file():
 
 
 def load_entries():
-    """Load beer entries from the CSV file"""
+    """Load beer entries from the CSV file."""
     ensure_data_file()
     df = pd.read_csv(DATA_FILE)
 
@@ -93,7 +101,7 @@ def load_entries():
 
 
 def save_entry(entry):
-    """Save a new beer entry to the CSV file"""
+    """Save a new beer entry to the CSV file."""
     df = load_entries()
     new_entry = pd.DataFrame([entry.to_dict()])
     df = pd.concat([df, new_entry], ignore_index=True)
@@ -101,7 +109,7 @@ def save_entry(entry):
 
 
 def load_custom_css():
-    """Adding my own theme to the app (this is my wheelhouse)"""
+    """Apply custom Rough Draught styling."""
     if BACKGROUND_FILE.exists():
         background_image = get_base64_image(BACKGROUND_FILE)
 
@@ -139,7 +147,7 @@ def load_custom_css():
             font-family: "Courier New", monospace;
             font-size: 1.25rem;
             font-weight: 700;
-            line-height: 1;
+            line-height: 1.2;
             color: #2b1a10;
             text-align: center;
             margin-top: -1rem;
@@ -158,28 +166,24 @@ def load_custom_css():
 
         p, div, label, span {{
             color: #2b1a10;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
         }}
 
         label,
         .stMarkdown,
         .stCaption {{
             font-family: "Courier New", monospace !important;
-            font-weight: bold;
             font-size: 1rem !important;
             font-weight: 500 !important;
             color: #f8e7bd !important;
-        }}
-
-        p, div {{
-            font-family: "Courier New", monospace;
-            font-weight: bold;
         }}
 
         input,
         textarea {{
             background-color: rgba(59, 36, 20, 0.60) !important;
             color: #f8e7bd !important;
-            caret-color: rgba(59, 36, 20, 0.60) !important;
+            caret-color: #f8e7bd !important;
             border: 0px solid #2b1a10 !important;
             border-radius: 10px !important;
         }}
@@ -187,6 +191,16 @@ def load_custom_css():
         input::placeholder,
         textarea::placeholder {{
             color: #f8e7bd !important;
+        }}
+
+        .stTextInput input,
+        .stTextArea textarea {{
+            background-color: #7f6342 !important;
+            color: #f8e7bd !important;
+        }}
+
+        [data-baseweb="input"] {{
+            background-color: rgba(59, 36, 20, 0.60) !important;
         }}
 
         .stSelectbox div[data-baseweb="select"] > div {{
@@ -200,79 +214,14 @@ def load_custom_css():
             color: #f8e7bd !important;
         }}
 
-        /* Dropdown menu background */
-        div[role="listbox"] {{
-            background-color: rgba(59, 36, 20, 0.60) !important;
-            border: 1px solid #8a613a !important;
-        }}
-
-        /* Individual dropdown options */
-        div[role="option"] {{
-            background-color: rgba(59, 36, 20, 0.60) !important;
+        div[role="listbox"],
+        div[role="option"],
+        li[role="option"] {{
+            background-color: #7f6342 !important;
             color: #f8e7bd !important;
             font-family: "Courier New", monospace !important;
         }}
 
-        /* Hovered option */
-        div[role="option"]:hover {{
-            background-color: rgba(59, 36, 20, 0.60) !important;
-            color: #fff1c7 !important;
-        }}
-
-        /* Selected option */
-        div[aria-selected="true"] {{
-            background-color: rgba(59, 36, 20, 0.60) !important;
-            color: #fff1c7 !important;
-        }}
-        .stTextInput input,
-        .stTextArea textarea {{
-            background-color: #7f6342 !important;
-            color: #f8e7bd !important;
-        }}
-        [data-baseweb="input"] {{
-            background-color: rgba(59, 36, 20, 0.60) !important;
-        }}
-
-        .stRadio label,
-        .stRadio div {{
-            color: #2b1a10 !important;
-            font-family: "Courier New", monospace !important;
-            font-weight: bold;
-        }}
-
-        div[data-testid="stFormSubmitButton"] button {{
-            background-color: #7f6342 !important;
-            color: #f8e7bd !important;
-            border: 1px solid #8a613a !important;
-            border-radius: 10px !important;
-            padding: 0.65rem 1.25rem !important;
-            font-family: "Courier New", monospace !important;
-            font-weight: bold;
-            font-size: 1rem !important;
-            font-weight: 700 !important;
-        }}
-
-        div[data-testid="stFormSubmitButton"] button:hover {{
-            background-color: rgba(90, 56, 34, 0.95) !important;
-            color: #fff1c7 !important;
-            border: 1px solid #8a613a !important;
-        }}
-
-        div[data-testid="stFormSubmitButton"] button:focus {{
-            color: #fff1c7 !important;
-            border: 1px solid #8a613a !important;
-            box-shadow: 0 0 0 2px rgba(184, 135, 79, 0.35) !important;
-        }}
-
-        
-        /* Dropdown options */
-        li[role="option"],
-        div[role="option"] {{
-            background-color: #7f6342 !important;
-            color: #f8e7bd !important;
-        }}
-
-        /* Hover/focus option */
         li[role="option"]:hover,
         div[role="option"]:hover,
         li[aria-selected="true"],
@@ -281,17 +230,6 @@ def load_custom_css():
             color: #fff1c7 !important;
         }}
 
-        /* Placeholder/value text */
-        div[data-baseweb="select"] * {{
-            color: #f8e7bd !important;
-            -webkit-text-fill-color: #f8e7bd !important;
-        }}
-
-        div[data-baseweb="select"] input {{
-            caret-color: transparent !important;
-        }}
-
-        /* TRUE NUCLEAR TEXT COLOR OVERRIDE */
         div[data-baseweb="select"] *,
         div[data-baseweb="popover"] *,
         div[data-baseweb="menu"] *,
@@ -302,48 +240,37 @@ def load_custom_css():
             -webkit-text-fill-color: #f8e7bd !important;
         }}
 
-        /* NUCLEAR CURSOR KILL */
-
-        div[data-baseweb="select"] input,
-        div[data-baseweb="select"] textarea {{
+        div[data-baseweb="select"] input {{
             caret-color: transparent !important;
-            color: transparent !important;
-            text-shadow: 0 0 0 #f8e7bd !important;
         }}
 
-        div[data-baseweb="select"] input:focus {{
-            outline: none !important;
-            box-shadow: none !important;
+        .stRadio label,
+        .stRadio div {{
+            color: #2b1a10 !important;
+            font-family: "Courier New", monospace !important;
+            font-weight: bold;
         }}
-
-        /* SAVE BUTTON NUCLEAR OVERRIDE */
 
         div[data-testid="stFormSubmitButton"] button,
         button[kind="primaryFormSubmit"] {{
             background-color: #7f6342 !important;
             color: #f8e7bd !important;
             -webkit-text-fill-color: #f8e7bd !important;
-
             border: 1px solid #8a613a !important;
             border-radius: 10px !important;
-
             font-family: "Courier New", monospace !important;
             font-size: 1rem !important;
             font-weight: 700 !important;
-
             padding: 0.65rem 1.25rem !important;
-
             box-shadow: none !important;
         }}
 
-        /* EVERYTHING INSIDE BUTTON */
         div[data-testid="stFormSubmitButton"] button *,
         button[kind="primaryFormSubmit"] * {{
             color: #f8e7bd !important;
             -webkit-text-fill-color: #f8e7bd !important;
         }}
 
-        /* Hover */
         div[data-testid="stFormSubmitButton"] button:hover,
         button[kind="primaryFormSubmit"]:hover {{
             background-color: #9a7a53 !important;
@@ -351,26 +278,45 @@ def load_custom_css():
             border-color: #b8874f !important;
         }}
 
-        /* Hover text */
-        div[data-testid="stFormSubmitButton"] button:hover *,
-        button[kind="primaryFormSubmit"]:hover * {{
-            color: #fff1c7 !important;
-            -webkit-text-fill-color: #fff1c7 !important;
-        }}
-
         .empty-message {{
-        font-family: "Courier New", monospace;
-        color: #2b1a10;
-        font-size: 1.1rem;
-        margin-top: 1rem;
-        padding-left: 7rem;
-        padding-right: 2rem;
+            font-family: "Courier New", monospace;
+            color: #2b1a10;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            padding-left: 1rem;
         }}
 
-        .search-box {{
-        padding-left: 7rem;
-        }}
+        @media only screen and (max-width: 768px) {{
+            .stApp {{
+                background-size: auto 100%;
+                background-position: top left;
+                background-attachment: scroll;
+            }}
 
+            .block-container {{
+                max-width: 100% !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                padding-top: 1rem !important;
+            }}
+
+            .slogan {{
+                font-size: 1rem;
+                line-height: 1.3;
+                margin-top: 0rem;
+            }}
+
+            .custom-header {{
+                font-size: 1.15rem !important;
+                margin-left: 0rem !important;
+                margin-bottom: 0rem !important;
+            }}
+
+            img {{
+                max-width: 260px !important;
+                height: auto !important;
+            }}
+        }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -378,7 +324,7 @@ def load_custom_css():
 
 
 def main():
-    """Run the Rough Draught Streamlit app"""
+    """Run the Rough Draught Streamlit app."""
     st.set_page_config(
         page_title="Rough Draught",
         page_icon="🍺",
@@ -406,20 +352,15 @@ def main():
     st.markdown(
         """
         <div class="custom-header">
-               Log a Beer
+            Log a Beer
         </div>
         """,
         unsafe_allow_html=True,
     )
 
     with st.form("beer_entry_form"):
-        beer_name = st.text_input(
-            "Beer Name:red[*] (Required)"
-        )
-
-        brewery = st.text_input(
-            "Brewery:red[*] (Required)"
-        )
+        beer_name = st.text_input("Beer Name:red[*] (Required)")
+        brewery = st.text_input("Brewery:red[*] (Required)")
 
         col1, col2 = st.columns(2)
 
@@ -519,9 +460,9 @@ def main():
             )
 
         rating = st.selectbox(
-            "Rating",
+            "Rating 1-5",
             options=list(RATING_DESCRIPTIONS.keys()),
-            format_func=lambda x: RATING_DESCRIPTIONS[x],
+            format_func=lambda x: f"{x}. {RATING_DESCRIPTIONS[x]}",
         )
 
         rating_description = RATING_DESCRIPTIONS[rating]
@@ -556,20 +497,15 @@ def main():
             abv_error = validate_abv(abv)
             price_error = validate_price(price)
 
-            if style_error:
-                errors.append(style_error)
-
-            if country_error:
-                errors.append(country_error)
-
-            if pack_size_error:
-                errors.append(pack_size_error)
-
-            if abv_error:
-                errors.append(abv_error)
-
-            if price_error:
-                errors.append(price_error)
+            for error in [
+                style_error,
+                country_error,
+                pack_size_error,
+                abv_error,
+                price_error,
+            ]:
+                if error:
+                    errors.append(error)
 
             if style_choice == 10:
                 errors.append(validate_other_field(beer_style, "Beer style"))
@@ -596,11 +532,8 @@ def main():
                         )
                     )
 
-            if country == "United States":
-                if not location_detail.strip():
-                    errors.append(
-                        "Please enter the city and state for the brewery."
-                    )
+            if country == "United States" and not location_detail.strip():
+                errors.append("Please enter the city and state for the brewery.")
 
             errors = [error for error in errors if error]
 
@@ -636,49 +569,45 @@ def main():
                 st.success(f"Saved: {entry.summary()}")
 
     st.markdown(
-    """
-    <div class="custom-header">
-        Saved Beer Entries
-    </div>
-    """,
-    unsafe_allow_html=True,
+        """
+        <div class="custom-header">
+            Saved Beer Entries
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
+
     st.markdown("<br>", unsafe_allow_html=True)
 
     entries = load_entries()
-    
+    entries.reset_index(inplace=True)
+
     left_spacer, search_col, right_spacer = st.columns([0.2, 5, 1])
 
     with search_col:
         search_term = st.text_input(
-        "Search Entries",
-        placeholder="Search brewery, beer, style, notes...",
-        )
-
-
-        st.markdown(
-            '</div>',
-            unsafe_allow_html=True,
+            "Search Entries",
+            placeholder="Search brewery, beer, style, notes...",
+            key="search_entries_input",
         )
 
     if search_term:
         search_term = search_term.lower().strip()
         entries = entries[
             entries.apply(
-                lambda row: search_term
-                in row.astype(str).str.lower().to_string(),
+                lambda row: search_term in row.astype(str).str.lower().to_string(),
                 axis=1,
             )
         ]
 
     if entries.empty:
         st.markdown(
-        """
-        <div class="empty-message">
-            No beer entries found yet.
-        </div>
-        """,
-        unsafe_allow_html=True,
+            """
+            <div class="empty-message">
+                No beer entries found yet.
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
     else:
         display_columns = [
@@ -691,12 +620,16 @@ def main():
             "buy_again",
         ]
 
-        st.dataframe(
-            entries[display_columns],
-            use_container_width=True,
-        )
+        st.dataframe(entries[display_columns], use_container_width=True)
 
-        st.subheader("Expanded Tasting Notes")
+        st.markdown(
+            """
+            <div class="custom-header">
+                Expanded Tasting Notes
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
         for _, row in entries.iterrows():
             with st.expander(f"{row['beer_name']} by {row['brewery']}"):
@@ -707,7 +640,6 @@ def main():
                 st.write(f"Strength: {row['strength']}")
                 st.write(f"Country: {row['country']}")
                 st.write(f"City: {row['city']}")
-                st.write(f"State: {row['state']}")
                 st.write(f"Pack Size: {row['pack_size']}")
                 st.write(f"Bottle/Can Size: {row['container_size']}")
                 st.write(f"Price: ${row['price']}")
@@ -719,6 +651,17 @@ def main():
                     st.write("No tasting notes entered.")
                 else:
                     st.write(f"Tasting Notes: {notes}")
+
+                if st.button(
+                    f"Delete {row['beer_name']}",
+                    key=f"delete_{row['index']}",
+                ):
+                    full_entries = load_entries()
+                    full_entries.drop(index=row["index"], inplace=True)
+                    full_entries.to_csv(DATA_FILE, index=False)
+
+                    st.success(f"Deleted {row['beer_name']}")
+                    st.rerun()
 
 
 if __name__ == "__main__":
