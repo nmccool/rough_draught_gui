@@ -275,8 +275,18 @@ def main():
         )
 
         st.markdown(
-            "</div>",
-            unsafe_allow_html=True,
+        """
+        <h2 style="
+            font-family: 'Courier New', monospace;
+            color: #2b1a10;
+            font-weight: 700;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        ">
+            Add a Beer Entry
+        </h2>
+        """,
+        unsafe_allow_html=True,
         )
 
     with st.form("beer_entry_form"):
