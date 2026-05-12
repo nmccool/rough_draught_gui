@@ -157,7 +157,7 @@ def load_custom_css():
         }}
 
         h1, h2, h3 {{
-            font-family: "Times New Roman", serif !important;
+            font-family: "Courier New", serif !important;
             color: #2b1a10 !important;
             font-weight: 700 !important;
         }}
