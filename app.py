@@ -124,9 +124,9 @@ def load_custom_css():
         .block-container {{
             padding-top: 0rem !important;
             padding-bottom: 0rem;
-            padding-left: 5rem;
+            padding-left: 7rem;
             padding-right: 2rem;
-            max-width: 650px;
+            max-width: 675px;
         }}
 
         .logo-wrapper {{
