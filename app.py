@@ -95,6 +95,7 @@ def get_base64_image(image_path):
 
 def load_custom_css():
     """Add some style to the app (this is my wheelhouse)."""
+
     if BACKGROUND_FILE.exists():
         background_image = get_base64_image(BACKGROUND_FILE)
 
@@ -103,7 +104,7 @@ def load_custom_css():
         background-image: url("data:image/png;base64,{background_image}");
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: top center;
+        background-position: top;
         background-attachment: fixed;
         """
     else:
@@ -141,7 +142,7 @@ def load_custom_css():
 
         .slogan {{
             font-family: "Courier New", monospace;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 700;
             line-height: 1.7;
             color: #2b1a10;
@@ -247,7 +248,10 @@ def main():
             unsafe_allow_html=True,
         )
 
-        st.image(str(LOGO_FILE), width=420)
+        _, center_col, _ = st.columns([1, 2, 1])
+
+        with center_col:
+            st.image(str(LOGO_FILE), width=420)
 
         st.markdown(
             """
