@@ -136,7 +136,7 @@ def load_custom_css():
             justify-content: center;
             text-align: center;
             width: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 0rem;
         }}
 
         .logo-wrapper img {{
@@ -152,8 +152,8 @@ def load_custom_css():
             line-height: 1.7;
             color: #2b1a10;
             text-align: center;
-            margin-top: 0.5rem;
-            margin-bottom: 2rem;
+            margin-top: 0rem;
+            margin-bottom: 1rem;
         }}
 
         h1, h2, h3 {{
