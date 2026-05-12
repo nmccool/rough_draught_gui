@@ -33,7 +33,7 @@ from blueprints import (
 
 BASE_DIR = Path(__file__).parent
 
-ASSETS_DIR = BASE_DIR / "assets"
+ASSETS_DIR = BASE_DIR / "Assets"
 DATA_DIR = BASE_DIR / "data"
 
 LOGO_FILE = ASSETS_DIR / "RoughDraughtLogoT.png"
