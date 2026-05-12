@@ -101,7 +101,7 @@ def load_custom_css():
         background_css = f"""
         background-color: #2b1a10;
         background-image: url("data:image/png;base64,{background_image}");
-        background-size: cover;
+        background-size: fit width;
         background-repeat: no-repeat;
         background-position: top center;
         background-attachment: fixed;
@@ -126,7 +126,7 @@ def load_custom_css():
             padding-bottom: 2rem;
             padding-left: 2rem;
             padding-right: 2rem;
-            max-width: 950px;
+            max-width: 650px;
         }}
 
         .logo-wrapper {{
