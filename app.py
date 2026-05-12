@@ -647,18 +647,14 @@ def main():
 
     entries = load_entries()
     
-    left_col, right_col = st.columns([5, 1])
+    left_spacer, search_col, right_spacer = st.columns([0.2, 5, 1])
 
-    with left_col:
-        st.markdown(
-            '<div class="search-box">',
-            unsafe_allow_html=True,
-        )
-
+    with search_col:
         search_term = st.text_input(
-            "Search Entries",
-            placeholder="Search brewery, beer, style, notes...",
+        "Search Entries",
+        placeholder="Search brewery, beer, style, notes...",
         )
+
 
         st.markdown(
             '</div>',
