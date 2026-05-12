@@ -94,7 +94,7 @@ def get_base64_image(image_path):
 
 
 def load_custom_css():
-    """Add some style to the app (this is my wheelhouse)"""
+    """Add some style to the app (this is my wheelhouse)."""
     if BACKGROUND_FILE.exists():
         background_image = get_base64_image(BACKGROUND_FILE)
 
@@ -112,7 +112,6 @@ def load_custom_css():
     st.markdown(
         f"""
         <style>
-
         .stApp {{
             {background_css}
         }}
@@ -124,11 +123,20 @@ def load_custom_css():
             max-width: 950px;
         }}
 
-        .logo-container {{
+        .logo-wrapper {{
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 1rem;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 2rem;
+        }}
+
+        .logo-wrapper img {{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }}
 
         .slogan {{
@@ -137,6 +145,7 @@ def load_custom_css():
             font-weight: 700;
             line-height: 1.7;
             color: #2b1a10;
+            text-align: center;
             margin-top: 0.5rem;
             margin-bottom: 2rem;
         }}
@@ -171,7 +180,7 @@ def load_custom_css():
 
         input,
         textarea {{
-            background-color: rgba(59, 36, 20, 0.78) !important;
+            background-color: rgba(59, 36, 20, 0.70) !important;
             color: #f8e7bd !important;
             caret-color: #f8e7bd !important;
             border: 1px solid #8a613a !important;
@@ -184,7 +193,7 @@ def load_custom_css():
         }}
 
         .stSelectbox div[data-baseweb="select"] > div {{
-            background-color: rgba(59, 36, 20, 0.78) !important;
+            background-color: rgba(59, 36, 20, 0.70) !important;
             color: #f8e7bd !important;
             border: 1px solid #8a613a !important;
             border-radius: 10px !important;
@@ -197,7 +206,7 @@ def load_custom_css():
         .stNumberInput input,
         .stTextInput input,
         .stTextArea textarea {{
-            background-color: rgba(59, 36, 20, 0.78) !important;
+            background-color: rgba(59, 36, 20, 0.70) !important;
             color: #f8e7bd !important;
         }}
 
@@ -216,7 +225,6 @@ def load_custom_css():
             color: #fff1c7;
             border: 1px solid #b8874f;
         }}
-
         </style>
         """,
         unsafe_allow_html=True,
